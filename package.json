@@ -1,0 +1,17 @@
+{
+  "name": "convai-embody-onprem-example",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "vite build", "preview": "vite preview" },
+  "dependencies": {
+    "@convai/embody": "1.2.0-beta.7",
+    "@convai/web-sdk": "^2.0.2",
+    "@convai/web-widget": "^0.3.2",
+    "@react-three/fiber": "^8.18.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.170.0"
+  },
+  "devDependencies": { "@vitejs/plugin-react": "^4.7.0", "vite": "^6.0.0" }
+}
