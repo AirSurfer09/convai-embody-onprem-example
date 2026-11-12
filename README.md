@@ -44,6 +44,23 @@ Verified on 2026-11-12 against `api-sh-aws.convai.com` with the character
 "robot 11": body served from `assets-sh-aws`, connection on `live-sh-aws`,
 widget name and avatar from `api-sh-aws`, 964 lipsync frames over a 17 s reply.
 
+## Fully on-prem: no request leaves the install
+
+An on-prem install may have no route to the internet, so this app makes no
+request outside it. Checked on 2026-11-12 in Chrome's network log: the page
+talked only to `api-sh-aws`, `live-sh-aws` and `assets-sh-aws`, plus the app's
+own host.
+
+- **Draco decoder.** Convai bodies are Draco-compressed. Embody loads the
+  decoder from Google's CDN by default, so this app ships it in `public/draco/`
+  (copied from `three/examples/jsm/libs/draco/gltf/`) and passes
+  `dracoDecoderPath="/draco/"`. Without a decoder the body fails to load.
+- **Voice.** Use a voice the install offers. Its catalogue is
+  `GET /tts/get_available_voices` on the Middleman, which lists the Convai
+  (Playground) voices and AWS Polly voices. Cloud-only voices, such as
+  ElevenLabs ones, are not there. The sample character speaks with the
+  Playground's Bella (`af_bella`).
+
 ## Requirements
 
 - `@convai/embody` 1.2.0-beta.8 or later (the `onPrem` option).
@@ -60,5 +77,6 @@ widget name and avatar from `api-sh-aws`, 964 lipsync frames over a 17 s reply.
 |---|---|---|
 | `embodiment resolve failed … HTTP 404` | The route is not served on this install, or the character has no web body | Deploy the embodiment blueprint (runbook step 1) or publish a body for the avatar |
 | `Invalid API key` | A SaaS key, or a key from another install | Use a key the install issued |
-| Body never appears, console shows a blocked `gstatic.com/draco` request | The decoder is fetched from Google by default | Self-host it and pass `dracoDecoderPath` |
+| Body never appears, console shows a blocked `gstatic.com/draco` request | The decoder path was removed, so it is fetched from Google | Keep `public/draco/` and `dracoDecoderPath="/draco/"` |
+| The character answers in text but stays silent | Its voice is not offered by the install | Pick a voice from `GET /tts/get_available_voices` |
 | Widget shows "Convi" instead of the name | The character info host is wrong | `onPrem` sets it; if you override `session.characterInfoUrl`, point it at the Middleman |

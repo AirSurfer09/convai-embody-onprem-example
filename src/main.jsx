@@ -19,6 +19,8 @@ function App() {
         apiKey={apiKey}
         characterId={characterId}
         onPrem={onPrem}
+        // Served from this app (public/draco), not Google's CDN: an on-prem install may have no internet.
+        dracoDecoderPath="/draco/"
         session={{ endUserId: 'onprem-example-visitor' }}
         onReady={(character) => setClient(character.client)}
         onError={(e) => console.error('[embody]', e)}
