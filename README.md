@@ -46,7 +46,7 @@ widget name and avatar from `api-sh-aws`, 964 lipsync frames over a 17 s reply.
 
 ## Requirements
 
-- `@convai/embody` 1.2.0-beta.7 or later (the `onPrem` option).
+- `@convai/embody` 1.2.0-beta.8 or later (the `onPrem` option).
 - The install must serve the embodiment route on its Middleman and have the
   character's avatar published with a web body. The runbook for that is
   `aws/apps/EMBODY.md` in `Conv-AI/on-prem-deployments`; the client-side

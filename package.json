@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": { "dev": "vite", "build": "vite build", "preview": "vite preview" },
   "dependencies": {
-    "@convai/embody": "1.2.0-beta.7",
+    "@convai/embody": "1.2.0-beta.8",
     "@convai/web-sdk": "^2.0.2",
     "@convai/web-widget": "^0.3.2",
     "@react-three/fiber": "^8.18.0",
