@@ -72,6 +72,16 @@ own host.
 - An API key issued by the install. Keys and character ids are per install:
   a SaaS key or character id does not work here, and the reverse.
 
+## First load
+
+The body is one GLB file of tens of MB (robot 11's is 37 MB), and the page shows a
+loading message until `onReady` fires. On the `sh-aws` install the asset host served it
+at about 1.9 MB/s, so a first visit waited about 19 s. The asset host sends no
+`Cache-Control`, so the browser fetches the body again on every visit. An
+install that wants a fast first load should put the asset host behind a CDN
+and send `Cache-Control: public, max-age=31536000, immutable`: body URLs carry
+a release, so a published file never changes.
+
 ## Troubleshooting
 
 | Symptom | Cause | Fix |

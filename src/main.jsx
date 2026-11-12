@@ -11,6 +11,14 @@ const onPrem = import.meta.env.VITE_CONVAI_ONPREM_URL
 const apiKey = import.meta.env.VITE_CONVAI_API_KEY
 const characterId = import.meta.env.VITE_CONVAI_CHARACTER_ID
 
+function Loading() {
+  return (
+    <div style={{ position: 'fixed', inset: 0, display: 'grid', placeItems: 'center', color: '#c9ced6', font: '15px system-ui, sans-serif' }}>
+      Loading the character…
+    </div>
+  )
+}
+
 function App() {
   const [client, setClient] = useState(null)
   return (
@@ -25,6 +33,9 @@ function App() {
         onReady={(character) => setClient(character.client)}
         onError={(e) => console.error('[embody]', e)}
       />
+      {/* Until the body is ready. A body is tens of MB, and an install's asset
+          host can take a while to serve it on a first visit. */}
+      {!client && <Loading />}
       {client && <ConvaiWidget convaiClient={client} />}
     </>
   )
