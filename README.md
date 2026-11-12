@@ -40,9 +40,10 @@ spoken with lip-sync; every request goes to the install's hosts and none to
 `convai.com`'s SaaS (check the Network tab: `api-<env>`, `live-<env>`,
 `assets-<env>` only).
 
-Verified on 2026-11-12 against `api-sh-aws.convai.com` with the character
-"robot 11": body served from `assets-sh-aws`, connection on `live-sh-aws`,
-widget name and avatar from `api-sh-aws`, 964 lipsync frames over a 17 s reply.
+Verified on 2026-11-12 with `@convai/embody` 1.2.0-beta.8 installed from npm,
+against `api-sh-aws.convai.com` with the character "robot 11": body served
+from `assets-sh-aws`, connection on `live-sh-aws`, widget name and avatar from
+`api-sh-aws`, the reply spoken with lip sync.
 
 ## Fully on-prem: no request leaves the install
 
