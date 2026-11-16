@@ -1,93 +1,81 @@
-# Convai Embody on an on-prem install
+# Convai Embody — one page, two deployments
 
-The smallest page that renders a Convai character as a 3D body and lets you
-talk to it, against an on-prem Convai install instead of Convai's SaaS. One
-component, one chat widget, one URL for the install.
+A Convai character as a talking 3D body, served from either **Convai Cloud** or
+an **on-prem install**, switched with a button. The same component renders
+both; only the credential and, for on-prem, the install URL differ.
 
 ```jsx
-<ConvaiCharacter apiKey={apiKey} characterId={characterId} onPrem="https://api-sh-aws.convai.com"
-  onReady={(character) => setClient(character.client)} />
+<ConvaiCharacter
+  token={token}                 // short-lived Convai auth token from this site's server
+  characterId={characterId}
+  onPrem={onPremUrl}            // omitted for Convai Cloud
+  session={{ audioRouting: 'data_only' }}
+  onReady={(character) => setClient(character.client)}
+/>
 {client && <ConvaiWidget convaiClient={client} />}
 ```
 
-`onPrem` is the install's Middleman URL. Embody points the embodiment manifest
-(`GET /character/{id}/embodiment`) and the character info (`POST /character/get`)
-at it, and derives the install's other hosts by the deployment's naming
-convention:
+## How it works
 
-| Service | Host | Used for |
+| Piece | Where | What it does |
 |---|---|---|
-| Middleman | `api-<env>.<domain>` | the body manifest, the character's name and avatar |
-| Realtime | `live-<env>.<domain>` | the `/connect` session: voice, text, lipsync frames |
-| Character API | `character-apis-<env>.<domain>` | character versions |
-| Assets | `assets-<env>.<domain>` | the GLB files the manifest points at (served by the install's asset proxy) |
+| `api/character.js` | server (a Vercel function; Vite middleware in `pnpm dev`) | Holds the API keys. For `?target=cloud` or `?target=onprem` it mints a short-lived auth token from that deployment's `POST /user/connect` and returns it with the character id and, for on-prem, the install URL. |
+| `src/main.jsx` | browser | Asks the server for the selected character, renders it with `@convai/embody`, and puts the `@convai/web-widget` chat panel on the same connection. The button switches characters; the old one disconnects before the new one connects. |
 
-Anything you name yourself in `session` (`url`, `characterInfoUrl`,
-`characterApiUrl`) or in `baseUrl` wins over what is derived.
+**Authentication.** The browser never sees an API key. It gets a Convai auth
+token, valid for an hour, minted on the server for the deployment it is about
+to talk to. The endpoint answers only requests from this page (a browser on
+another site is refused). It does not check who the visitor is: put your own
+sign-in in front of it before you share a deployment widely, as the token lets
+whoever holds it talk to the character.
+
+**Voice and lipsync.** `audioRouting: 'data_only'` sends the character's voice
+over the data channel next to its lipsync frames. The SDK plays only audio whose
+lipsync has also arrived, starting each reply once 0.9 s of both is in hand, and
+embody clocks the mouth from what is actually heard, always at least one frame
+ahead of the sound. On a slow network the voice pauses between words to refill
+instead of stuttering or speaking with a still face.
 
 ## Run it
 
 ```bash
 pnpm install
-cp .env.example .env     # then fill in the key and the character id
+cp .env.example .env     # fill in both deployments' keys and character ids
 pnpm dev
 ```
 
-Open the printed URL. The body downloads from the install's asset host, the
-character stands at eye level, and the chat launcher sits bottom right. Click
-it, press **Exit Voice Mode** to type, or use the microphone. The reply is
-spoken with lip-sync; every request goes to the install's hosts and none to
-`convai.com`'s SaaS (check the Network tab: `api-<env>`, `live-<env>`,
-`assets-<env>` only).
+Open the printed URL, click the chat launcher (bottom right), then **Exit Voice
+Mode** to type, or use the microphone. **Convai Cloud** / **On-prem** (top left)
+switch the character.
 
-Verified on 2026-11-12 with `@convai/embody` 1.2.0-beta.8 installed from npm,
-against `api-sh-aws.convai.com` with the character "robot 11": body served
-from `assets-sh-aws`, connection on `live-sh-aws`, widget name and avatar from
-`api-sh-aws`, the reply spoken with lip sync.
+| Variable | Meaning |
+|---|---|
+| `CONVAI_API_KEY`, `CONVAI_CHARACTER_ID` | A Convai Cloud key and a character on it with a web body. |
+| `CONVAI_ONPREM_URL` | The install's URL, `https://api-<env>.<domain>`. embody derives the install's realtime (`live-<env>`) and Character API (`character-apis-<env>`) hosts from it. |
+| `CONVAI_ONPREM_API_KEY`, `CONVAI_ONPREM_CHARACTER_ID` | A key issued by that install and a character on it. Keys and character ids belong to one deployment and are not interchangeable. |
 
-## Fully on-prem: no request leaves the install
+All five are server-side: none is prefixed `VITE_`, so none reaches the page.
 
-An on-prem install may have no route to the internet, so this app makes no
-request outside it. Checked on 2026-11-12 in Chrome's network log: the page
-talked only to `api-sh-aws`, `live-sh-aws` and `assets-sh-aws`, plus the app's
-own host.
+## Deploy to Vercel
 
-- **Draco decoder.** Convai bodies are Draco-compressed. Embody loads the
-  decoder from Google's CDN by default, so this app ships it in `public/draco/`
-  (copied from `three/examples/jsm/libs/draco/gltf/`) and passes
-  `dracoDecoderPath="/draco/"`. Without a decoder the body fails to load.
-- **Voice.** Use a voice the install offers. Its catalogue is
-  `GET /tts/get_available_voices` on the Middleman, which lists the Convai
-  (Playground) voices and AWS Polly voices. Cloud-only voices, such as
-  ElevenLabs ones, are not there. The sample character speaks with the
-  Playground's Bella (`af_bella`).
+```bash
+vercel link
+for v in CONVAI_API_KEY CONVAI_CHARACTER_ID CONVAI_ONPREM_URL CONVAI_ONPREM_API_KEY CONVAI_ONPREM_CHARACTER_ID; do vercel env add $v production; done
+vercel --prod
+```
 
-## Requirements
+Vercel builds the Vite app and serves `api/character.js` as a function; no
+configuration file is needed.
 
-- `@convai/embody` 1.2.0-beta.8 or later (the `onPrem` option).
-- The install must serve the embodiment route on its Middleman and have the
-  character's avatar published with a web body. The runbook for that is
-  `aws/apps/EMBODY.md` in `Conv-AI/on-prem-deployments`; the client-side
-  notes are in `plugins/convai-embody/README.md` there.
-- An API key issued by the install. Keys and character ids are per install:
-  a SaaS key or character id does not work here, and the reverse.
+## Packages
 
-## First load
+`@convai/web-sdk` 2.1.0-beta.1, `@convai/embody` 1.2.0-beta.10 and
+`@convai/web-widget` 0.3.4-beta.0 are vendored in `vendor/` until they are
+published; `pnpm.overrides` keeps one SDK copy, so the chat widget and the body
+share one connection. (Widget 0.3.4 shows the character's name and avatar for a
+client on an auth token; 0.3.2 left the header on a placeholder.) Once they are
+on npm, replace the `file:vendor/...` entries and the override with the
+published versions and delete `vendor/`.
 
-The body is one GLB file of tens of MB (robot 11's is 37 MB), and the page shows a
-loading message until `onReady` fires. On the `sh-aws` install the asset host served it
-at about 1.9 MB/s, so a first visit waited about 19 s. The asset host sends no
-`Cache-Control`, so the browser fetches the body again on every visit. An
-install that wants a fast first load should put the asset host behind a CDN
-and send `Cache-Control: public, max-age=31536000, immutable`: body URLs carry
-a release, so a published file never changes.
-
-## Troubleshooting
-
-| Symptom | Cause | Fix |
-|---|---|---|
-| `embodiment resolve failed … HTTP 404` | The route is not served on this install, or the character has no web body | Deploy the embodiment blueprint (runbook step 1) or publish a body for the avatar |
-| `Invalid API key` | A SaaS key, or a key from another install | Use a key the install issued |
-| Body never appears, console shows a blocked `gstatic.com/draco` request | The decoder path was removed, so it is fetched from Google | Keep `public/draco/` and `dracoDecoderPath="/draco/"` |
-| The character answers in text but stays silent | Its voice is not offered by the install | Pick a voice from `GET /tts/get_available_voices` |
-| Widget shows "Convi" instead of the name | The character info host is wrong | `onPrem` sets it; if you override `session.characterInfoUrl`, point it at the Middleman |
+The Draco decoder is served from `public/draco`, so the page needs no Google CDN
+(an on-prem network may have no internet).
