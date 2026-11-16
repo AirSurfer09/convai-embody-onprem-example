@@ -69,13 +69,13 @@ configuration file is needed.
 
 ## Packages
 
-`@convai/web-sdk` 2.1.0-beta.1, `@convai/embody` 1.2.0-beta.10 and
-`@convai/web-widget` 0.3.4-beta.0 are vendored in `vendor/` until they are
-published; `pnpm.overrides` keeps one SDK copy, so the chat widget and the body
-share one connection. (Widget 0.3.4 shows the character's name and avatar for a
-client on an auth token; 0.3.2 left the header on a placeholder.) Once they are
-on npm, replace the `file:vendor/...` entries and the override with the
-published versions and delete `vendor/`.
+`@convai/web-sdk` 2.1.0-beta.1 and `@convai/embody` 1.2.0-beta.10 come from npm
+(the `beta` tag). `@convai/web-widget` 0.3.4-beta.0 is vendored in `vendor/`
+until it is published: it shows the character's name and avatar for a client on
+an auth token, where 0.3.2 left the header on a placeholder. Once it is on npm,
+replace its `file:vendor/...` entry with the published version and delete
+`vendor/`. `pnpm.overrides` keeps one SDK copy, so the chat widget and the body
+share one connection.
 
 The Draco decoder is served from `public/draco`, so the page needs no Google CDN
 (an on-prem network may have no internet).
