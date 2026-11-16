@@ -5,21 +5,21 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@convai/web-sdk': 2.1.0-beta.1
+  '@convai/web-sdk': 2.1.0
 
 importers:
 
   .:
     dependencies:
       '@convai/embody':
-        specifier: 1.2.0-beta.10
-        version: 1.2.0-beta.10(@convai/web-sdk@2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@react-three/fiber@8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(react@18.3.1)(three@0.170.0)
+        specifier: 1.2.0
+        version: 1.2.0(@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@react-three/fiber@8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(react@18.3.1)(three@0.170.0)
       '@convai/web-sdk':
-        specifier: 2.1.0-beta.1
-        version: 2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)
+        specifier: 2.1.0
+        version: 2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)
       '@convai/web-widget':
-        specifier: 0.3.4-beta.0
-        version: 0.3.4-beta.0(@convai/web-sdk@2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@emotion/is-prop-valid@1.4.0)(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)
+        specifier: 0.3.4
+        version: 0.3.4(@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@emotion/is-prop-valid@1.4.0)(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)
       '@react-three/fiber':
         specifier: ^8.18.0
         version: 8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)
@@ -132,11 +132,11 @@ packages:
   '@bufbuild/protobuf@1.10.1':
     resolution: {integrity: sha512-wJ8ReQbHxsAfXhrf9ixl0aYbZorRuOWpBNzm8pL8ftmSxQx/wnJD5Eg861NwJU/czy2VXFIebCeZnZrI9rktIQ==}
 
-  '@convai/embody@1.2.0-beta.10':
-    resolution: {integrity: sha512-NGG/q0lQHE5ZueXy7lhLrNiBXDRYUh4anZ6wqIzjaxOzfAN6hbnFnxtFF0Y1kfCLRDmbZJwxtOJx4dI7tstjGQ==}
+  '@convai/embody@1.2.0':
+    resolution: {integrity: sha512-TS2Pkp7rEnxGbVDnUub4FyXLlOa9kOdkTNisfyrVFW2p87vaIMNgkICHseAm2RcQiuF3Vlfw7yHMI5fJs2Ht5Q==}
     engines: {node: '>=18', pnpm: '>=9'}
     peerDependencies:
-      '@convai/web-sdk': 2.1.0-beta.1
+      '@convai/web-sdk': 2.1.0
       '@react-three/fiber': '>=8 <10'
       react: '>=18 <20'
       three: '>=0.160 <1'
@@ -146,8 +146,8 @@ packages:
       react:
         optional: true
 
-  '@convai/web-sdk@2.1.0-beta.1':
-    resolution: {integrity: sha512-TRWLaXw4uJEBPrcz7pSN0/H2LP5V2tJ5Tzj1uwQg5qs9G3aYKW8a6vO/bv/BUCyXJOl5dQAGOAqqv6adgQ3jbA==}
+  '@convai/web-sdk@2.1.0':
+    resolution: {integrity: sha512-LLTOvtKbSxOP1hRpOCQgR8evTS75Avb85E0gmrpWZIdfx8sBc3SXxiaZBSFGaxA7bksz8tfo5/cMTvB6FhEziA==}
     peerDependencies:
       '@pipecat-ai/client-js': ^1.7.0
       '@pipecat-ai/websocket-transport': ^1.6.2
@@ -160,11 +160,11 @@ packages:
       react:
         optional: true
 
-  '@convai/web-widget@0.3.4-beta.0':
-    resolution: {integrity: sha512-sp38S/KZMLDnIx066s5ONkmAiuB32fPIqh7btBojPoSbwN0eG4M6uMNkuXieEZ9/fUlVVhItKRTf+LxE3QlBqg==}
+  '@convai/web-widget@0.3.4':
+    resolution: {integrity: sha512-GOAihg4RNUrt3NSmE6Hywxz9gJDARfhYSF/bmH5b1Vo6PZ89exF6QDon6p9S7f2Q9snc71mHjS2jwl9IkKUQyw==}
     engines: {node: '>=20'}
     peerDependencies:
-      '@convai/web-sdk': 2.1.0-beta.1
+      '@convai/web-sdk': 2.1.0
       livekit-client: '>=2.17.2 <3'
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -1036,15 +1036,15 @@ snapshots:
 
   '@bufbuild/protobuf@1.10.1': {}
 
-  '@convai/embody@1.2.0-beta.10(@convai/web-sdk@2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@react-three/fiber@8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(react@18.3.1)(three@0.170.0)':
+  '@convai/embody@1.2.0(@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@react-three/fiber@8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(react@18.3.1)(three@0.170.0)':
     dependencies:
-      '@convai/web-sdk': 2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)
+      '@convai/web-sdk': 2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)
       three: 0.170.0
     optionalDependencies:
       '@react-three/fiber': 8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)
       react: 18.3.1
 
-  '@convai/web-sdk@2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)':
+  '@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)':
     dependencies:
       livekit-client: 2.24.1(@types/dom-mediacapture-record@1.0.22)
     optionalDependencies:
@@ -1052,14 +1052,14 @@ snapshots:
     transitivePeerDependencies:
       - '@types/dom-mediacapture-record'
 
-  '@convai/web-widget@0.3.4-beta.0(@convai/web-sdk@2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@emotion/is-prop-valid@1.4.0)(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)':
+  '@convai/web-widget@0.3.4(@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@emotion/is-prop-valid@1.4.0)(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)':
     dependencies:
       '@livekit/components-react': 2.9.25(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)
       framer-motion: 11.18.2(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       livekit-client: 2.24.1(@types/dom-mediacapture-record@1.0.22)
       styled-components: 6.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     optionalDependencies:
-      '@convai/web-sdk': 2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)
+      '@convai/web-sdk': 2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:

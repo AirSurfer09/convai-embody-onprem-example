@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@convai/embody": "1.2.0-beta.10",
-    "@convai/web-sdk": "2.1.0-beta.1",
-    "@convai/web-widget": "0.3.4-beta.0",
+    "@convai/embody": "1.2.0",
+    "@convai/web-sdk": "2.1.0",
+    "@convai/web-widget": "0.3.4",
     "@react-three/fiber": "^8.18.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -23,7 +23,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@convai/web-sdk": "2.1.0-beta.1"
+      "@convai/web-sdk": "2.1.0"
     },
     "onlyBuiltDependencies": [
       "esbuild"
