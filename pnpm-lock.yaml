@@ -18,8 +18,8 @@ importers:
         specifier: 2.1.0-beta.1
         version: 2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)
       '@convai/web-widget':
-        specifier: file:vendor/convai-web-widget-0.3.4-beta.0.tgz
-        version: file:vendor/convai-web-widget-0.3.4-beta.0.tgz(@convai/web-sdk@2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@emotion/is-prop-valid@1.4.0)(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)
+        specifier: 0.3.4-beta.0
+        version: 0.3.4-beta.0(@convai/web-sdk@2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@emotion/is-prop-valid@1.4.0)(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)
       '@react-three/fiber':
         specifier: ^8.18.0
         version: 8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)
@@ -160,9 +160,8 @@ packages:
       react:
         optional: true
 
-  '@convai/web-widget@file:vendor/convai-web-widget-0.3.4-beta.0.tgz':
-    resolution: {integrity: sha512-84tw7NphaYi6kLypcB31f32LpZ4nxLdacZrpxnyQ0o5fAMAK4ix+j7fj/7+52WkiCr3Xegk7KNKdqadNGJ/+xA==, tarball: file:vendor/convai-web-widget-0.3.4-beta.0.tgz}
-    version: 0.3.4-beta.0
+  '@convai/web-widget@0.3.4-beta.0':
+    resolution: {integrity: sha512-sp38S/KZMLDnIx066s5ONkmAiuB32fPIqh7btBojPoSbwN0eG4M6uMNkuXieEZ9/fUlVVhItKRTf+LxE3QlBqg==}
     engines: {node: '>=20'}
     peerDependencies:
       '@convai/web-sdk': 2.1.0-beta.1
@@ -1053,7 +1052,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/dom-mediacapture-record'
 
-  '@convai/web-widget@file:vendor/convai-web-widget-0.3.4-beta.0.tgz(@convai/web-sdk@2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@emotion/is-prop-valid@1.4.0)(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)':
+  '@convai/web-widget@0.3.4-beta.0(@convai/web-sdk@2.1.0-beta.1(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@emotion/is-prop-valid@1.4.0)(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)':
     dependencies:
       '@livekit/components-react': 2.9.25(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)
       framer-motion: 11.18.2(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
