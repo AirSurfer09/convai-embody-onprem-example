@@ -75,7 +75,7 @@ function Loading({ label }) {
         <p style={styles.title}>Loading {label}…</p>
         {seconds >= 15 && (
           <p style={styles.text}>
-            {seconds} s. The 3D body is a large download (tens of MB); the first load can take a few minutes on a slow connection. Later loads are faster.
+            Taking a little longer than usual. This can take a few minutes on slower connections. Later visits are faster.
           </p>
         )}
       </div>
