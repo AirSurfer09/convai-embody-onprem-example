@@ -69,7 +69,7 @@ configuration file is needed.
 
 ## Packages
 
-`@convai/web-sdk` 2.1.0, `@convai/embody` 1.3.0 and `@convai/web-widget` 0.3.4,
+`@convai/web-sdk` 2.1.0, `@convai/embody` 1.3.1 and `@convai/web-widget` 0.3.4,
 from npm, pinned exactly. `pnpm.overrides` keeps one SDK copy, so the chat widget
 and the body share one connection.
 
