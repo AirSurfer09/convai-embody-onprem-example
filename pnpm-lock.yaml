@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@convai/embody':
-        specifier: 1.3.1
-        version: 1.3.1(@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@react-three/fiber@8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(react@18.3.1)(three@0.170.0)
+        specifier: 2.0.0
+        version: 2.0.0(@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@react-three/fiber@8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.187.0))(react@18.3.1)(three@0.187.0)
       '@convai/web-sdk':
         specifier: 2.1.0
         version: 2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)
@@ -22,7 +22,7 @@ importers:
         version: 0.3.4(@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@emotion/is-prop-valid@1.4.0)(livekit-client@2.24.1(@types/dom-mediacapture-record@1.0.22))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tslib@2.9.1)
       '@react-three/fiber':
         specifier: ^8.18.0
-        version: 8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)
+        version: 8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.187.0)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -30,8 +30,8 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       three:
-        specifier: ^0.170.0
-        version: 0.170.0
+        specifier: 0.187.0
+        version: 0.187.0
     devDependencies:
       '@vitejs/plugin-react':
         specifier: ^4.7.0
@@ -132,14 +132,14 @@ packages:
   '@bufbuild/protobuf@1.10.1':
     resolution: {integrity: sha512-wJ8ReQbHxsAfXhrf9ixl0aYbZorRuOWpBNzm8pL8ftmSxQx/wnJD5Eg861NwJU/czy2VXFIebCeZnZrI9rktIQ==}
 
-  '@convai/embody@1.3.1':
-    resolution: {integrity: sha512-T1GDagEIePrqn/K5bQUVVgafGlm/f1G7CZ8pxUDAVxzmZfve78irUVHEEjc1YwSDE2pxybvf9gLvHjcWMjyJbw==}
+  '@convai/embody@2.0.0':
+    resolution: {integrity: sha512-KJ7WcXUqDjNn0q1izEGE4kwyZSx085PsZkAdAOaBp4BR/MdF5RdfCjplPnLtTnY2wRPmEcqZiNmzYoFJ59IxTg==}
     engines: {node: '>=18', pnpm: '>=9'}
     peerDependencies:
       '@convai/web-sdk': 2.1.0
       '@react-three/fiber': '>=8 <10'
       react: '>=18 <20'
-      three: '>=0.160 <1'
+      three: '>=0.186 <1'
     peerDependenciesMeta:
       '@react-three/fiber':
         optional: true
@@ -629,6 +629,9 @@ packages:
       supports-color:
         optional: true
 
+  detect-gpu@5.0.70:
+    resolution: {integrity: sha512-bqerEP1Ese6nt3rFkwPnGbsUF9a4q+gMmpTVVOEzoCyeCc+y7/RvJnQZJx1JwhgQI5Ntg0Kgat8Uu7XpBqnz1w==}
+
   electron-to-chromium@1.5.486:
     resolution: {integrity: sha512-rpybw4Ac4ak/An6G1Me2+61xzwobowDGyuJe71QHHOVpkZv4fPVobsLl7WH6zHSKusAMpaHxGKTpOvpy7+r3dQ==}
 
@@ -834,8 +837,8 @@ packages:
     peerDependencies:
       react: '>=17.0'
 
-  three@0.170.0:
-    resolution: {integrity: sha512-FQK+LEpYc0fBD+J8g6oSEyyNzjp+Q7Ks1C568WWaoMRLW+TkNNWmenWeGgJjV105Gd+p/2ql1ZcjYvNiPZBhuQ==}
+  three@0.187.0:
+    resolution: {integrity: sha512-Qiu7R+Cmh8CstZsY1uJOSWnVlfo7ZtNLV7mF8Jltk3LB3AtDu9cRZlcnRKkAk8Y4z6KKw35z7Y7Urd7jWY8etA==}
 
   tinyglobby@0.2.17:
     resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
@@ -901,6 +904,9 @@ packages:
         optional: true
       yaml:
         optional: true
+
+  webgl-constants@1.1.1:
+    resolution: {integrity: sha512-LkBXKjU5r9vAW7Gcu3T5u+5cvSvh5WwINdr0C+9jpzVB41cjQAP5ePArDtk/WHYdVj0GefCgM73BA7FlIiNtdg==}
 
   webrtc-adapter@9.0.6:
     resolution: {integrity: sha512-CHbl2ZQbxx164IgWRgzJno4hWtM4tFbRam1QfI3Yxhs3w/DvqluVxVWeXs3oL5/fbGkSNLKo0Ty5MgUWceNhog==}
@@ -1036,12 +1042,13 @@ snapshots:
 
   '@bufbuild/protobuf@1.10.1': {}
 
-  '@convai/embody@1.3.1(@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@react-three/fiber@8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0))(react@18.3.1)(three@0.170.0)':
+  '@convai/embody@2.0.0(@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1))(@react-three/fiber@8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.187.0))(react@18.3.1)(three@0.187.0)':
     dependencies:
       '@convai/web-sdk': 2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)
-      three: 0.170.0
+      detect-gpu: 5.0.70
+      three: 0.187.0
     optionalDependencies:
-      '@react-three/fiber': 8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)
+      '@react-three/fiber': 8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.187.0)
       react: 18.3.1
 
   '@convai/web-sdk@2.1.0(@types/dom-mediacapture-record@1.0.22)(react@18.3.1)':
@@ -1209,7 +1216,7 @@ snapshots:
     dependencies:
       '@bufbuild/protobuf': 1.10.1
 
-  '@react-three/fiber@8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.170.0)':
+  '@react-three/fiber@8.18.0(@types/react@19.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.187.0)':
     dependencies:
       '@babel/runtime': 7.29.14
       '@types/react-reconciler': 0.26.7
@@ -1222,7 +1229,7 @@ snapshots:
       react-use-measure: 2.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       scheduler: 0.21.0
       suspend-react: 0.1.3(react@18.3.1)
-      three: 0.170.0
+      three: 0.187.0
       zustand: 3.7.2(react@18.3.1)
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
@@ -1392,6 +1399,10 @@ snapshots:
   debug@4.4.3:
     dependencies:
       ms: 2.1.3
+
+  detect-gpu@5.0.70:
+    dependencies:
+      webgl-constants: 1.1.1
 
   electron-to-chromium@1.5.486: {}
 
@@ -1607,7 +1618,7 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  three@0.170.0: {}
+  three@0.187.0: {}
 
   tinyglobby@0.2.17:
     dependencies:
@@ -1643,6 +1654,8 @@ snapshots:
       tinyglobby: 0.2.17
     optionalDependencies:
       fsevents: 2.3.3
+
+  webgl-constants@1.1.1: {}
 
   webrtc-adapter@9.0.6:
     dependencies:

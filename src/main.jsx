@@ -137,6 +137,8 @@ function Character({ target, label, onRetry }) {
           characterId={config.characterId}
           onPrem={config.onPrem}
           dracoDecoderPath="/draco/"
+          // detect-gpu's benchmark files, served by this site: an on-prem network may have no internet (default: unpkg)
+          benchmarksURL="/detect-gpu"
           session={SESSION}
           onReady={(character) => setClient(character.client)}
           // The first failure is the one that matters; a later one (teardown, a retry racing) must not replace it.
